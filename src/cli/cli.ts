@@ -1,4 +1,4 @@
-import { Command } from "../cli/commands/command.interface.js";
+import { Command } from '../cli/commands/command.interface.js';
 
 type CommandCollection = Record<string, Command>;
 type ParsedCommand = Record<string, string[]>;
@@ -11,7 +11,7 @@ export class CLIApplication {
     let commandName = '';
 
     return cliArguments.reduce((acc, argument) => {
-      const isCommandArg = argument.startsWith('--')
+      const isCommandArg = argument.startsWith('--');
 
       if (isCommandArg) {
         acc[argument] = [];
@@ -26,14 +26,13 @@ export class CLIApplication {
 
   public registerCommands(commandList: Command[]): void {
     for (const command of commandList) {
-      const commandName = command.getName()
+      const commandName = command.getName();
 
       if (Object.hasOwn(this.commands, commandName)) {
         throw new Error(`Command ${commandName} is already registered`);
       }
       this.commands[commandName] = command;
     }
-
   }
 
   public getCommand(commandName: string): Command {
@@ -42,7 +41,9 @@ export class CLIApplication {
 
   public getDefaultCommand(): Command | never {
     if (!this.commands[this.defaultCommand]) {
-      throw new Error (`The default command (${this.defaultCommand}) is not registration`);
+      throw new Error(
+        `The default command (${this.defaultCommand}) is not registration`
+      );
     }
     return this.commands[this.defaultCommand];
   }

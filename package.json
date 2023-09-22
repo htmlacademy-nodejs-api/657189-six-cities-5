@@ -29,9 +29,8 @@
     "typescript": "5.2.2"
   },
   "prettier": {
-    "options": {
-      "editorconfig": true
-    }
+    "editorconfig": true,
+    "singleQuote": true
   },
   "type": "module",
   "engines": {

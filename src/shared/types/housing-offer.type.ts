@@ -1,7 +1,7 @@
-import { CityNames } from "./city.type.js";
-import { Goods } from "./goods.type.js";
-import { HouseType } from "./house-type.type.js";
-import { User } from "./user.type.js";
+import { CityNames } from './city.type.js';
+import { Goods } from './goods.type.js';
+import { HouseType } from './house-type.type.js';
+import { User } from './user.type.js';
 
 export type HousingOffer = {
   title: string;
