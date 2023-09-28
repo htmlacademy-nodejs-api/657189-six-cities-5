@@ -15,7 +15,11 @@
     "compile": "tsc -p tsconfig.json",
     "clean": "rimraf dist",
     "cli": "node ./dist/main.cli.js",
-    "ts": "ts-node"
+    "ts": "ts-node",
+    "cli:dev": "ts-node src/main.cli.ts",
+    "cli:dev-generate-mocks": "ts-node src/main.cli.ts --generate 20 mocks/offers-mocks.tsv http://localhost:3123/api",
+    "cli:dev-import-mocks": "ts-node src/main.cli.ts --import mocks/offers-mocks.tsv",
+    "mock:server": "json-server ./mocks/mock-server-data.json --port 3123"
   },
   "devDependencies": {
     "@types/node": "^18.17.17",
@@ -23,9 +27,11 @@
     "@typescript-eslint/parser": "6.7.0",
     "eslint": "8.49.0",
     "eslint-config-htmlacademy": "9.1.1",
+    "json-server": "^0.17.3",
     "prettier": "^3.0.3",
     "rimraf": "5.0.1",
     "ts-node": "10.9.1",
+    "tslib": "^2.6.2",
     "typescript": "5.2.2"
   },
   "prettier": {
@@ -38,6 +44,8 @@
     "npm": ">=8"
   },
   "dependencies": {
-    "chalk": "^5.3.0"
+    "axios": "^1.5.0",
+    "chalk": "^5.3.0",
+    "dayjs": "^1.11.10"
   }
 }

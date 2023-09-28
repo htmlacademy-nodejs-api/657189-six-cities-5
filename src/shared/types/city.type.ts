@@ -8,7 +8,7 @@ export enum CityNames {
 }
 
 export type City = {
-  name: string;
+  name: CityNames;
   lat: number;
   lon: number;
 };

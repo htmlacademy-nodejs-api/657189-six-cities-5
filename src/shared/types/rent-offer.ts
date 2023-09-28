@@ -3,7 +3,7 @@ import { Goods } from './goods.type.js';
 import { HouseType } from './house-type.type.js';
 import { User } from './user.type.js';
 
-export type HousingOffer = {
+export type RentOffer = {
   title: string;
   description: string;
   offerDate: Date;
@@ -14,7 +14,7 @@ export type HousingOffer = {
   isFavorite: boolean;
   rating: number;
   type: HouseType;
-  bedrooms: number;
+  rooms: number;
   maxAdults: number;
   price: number;
   goods: Array<Goods>;
