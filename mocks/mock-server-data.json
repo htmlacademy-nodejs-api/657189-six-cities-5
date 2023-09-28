@@ -1,0 +1,51 @@
+{
+  "api": {
+    "titles": [
+      "Elite Marmara Old CityOpens in new window",
+      "Casa De Port Hotel",
+      "Carina Gold"
+    ],
+    "descriptions": [
+      "Featuring a terrace, bar and views of city, Grand Balyan Hotel & Restauran",
+      "Pell Palace Hotel & SPA features views of the city. Among the facilities at this property are a spa and wellness centre along with sauna.",
+      "Musk Hotel provides air-conditioned rooms, a terrace, free WiFi and a restaurant."
+    ],
+    "previews": [
+      "user.jpg",
+      "photo.jpg",
+      "awesome-avatar.jpg",
+      "roland.jpg",
+      "smite.jpg",
+      "coffee.jpg"
+    ],
+    "images": [
+      "hotel.jpg",
+      "house.jpg",
+      "dark-tower.jpg",
+      "undertown.jpg",
+      "joy.jpg",
+      "assengard.jpg"
+    ],
+    "usernames": [
+      "Nairo Delpho",
+      "Gavatreau Bizou",
+      "Phonettia Quinal",
+      "Falko Sylentis",
+      "Choryn Riggery",
+      "Hersperon Yllan",
+      "Fabria Eda",
+      "Sereni Tyrson"
+    ],
+    "emails": [
+      "snow@pisem.local",
+      "president@dka.local",
+      "fish@big.local",
+      "test@pisem.local",
+      "freedom@pisem.local",
+      "rolan@pochta.local",
+      "author@mir.local",
+      "test@lost.loca",
+      "kujo-fan@story.local"
+    ]
+  }
+}

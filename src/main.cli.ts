@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import {
   CLIApplication,
+  GenerateCommand,
   HelpCommand,
   ImportCommand,
   VersionCommand,
@@ -12,6 +13,7 @@ cliApplication.registerCommands([
   new HelpCommand(),
   new VersionCommand(),
   new ImportCommand(),
+  new GenerateCommand(),
 ]);
 
 cliApplication.executeCommand(process.argv);

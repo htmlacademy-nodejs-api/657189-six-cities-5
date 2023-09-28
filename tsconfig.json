@@ -21,6 +21,7 @@
     "outDir": "./dist",
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": false,
     "types": ["node"],
     "lib": ["ESNext"]
   },
