@@ -7,13 +7,17 @@ import {
   VersionCommand,
 } from './cli/index.js';
 
-const cliApplication = new CLIApplication();
+const bootstrap = () => {
+  const cliApplication = new CLIApplication();
 
-cliApplication.registerCommands([
-  new HelpCommand(),
-  new VersionCommand(),
-  new ImportCommand(),
-  new GenerateCommand(),
-]);
+  cliApplication.registerCommands([
+    new HelpCommand(),
+    new VersionCommand(),
+    new ImportCommand(),
+    new GenerateCommand(),
+  ]);
 
-cliApplication.executeCommand(process.argv);
+  cliApplication.executeCommand(process.argv);
+};
+
+bootstrap();

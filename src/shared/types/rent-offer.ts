@@ -1,6 +1,6 @@
 import { CityNames } from './city.type.js';
-import { Goods } from './goods.type.js';
-import { HouseType } from './house-type.type.js';
+import { Goods } from './goods.enum.js';
+import { HouseType } from './house-type.enum.js';
 import { User } from './user.type.js';
 
 export type RentOffer = {
