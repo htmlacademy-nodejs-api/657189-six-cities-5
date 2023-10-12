@@ -2,13 +2,13 @@ import { OfferGenerator } from './offer-generator.interface.js';
 import { MockServerData } from '../../types/mock-server-data.type.js';
 import dayjs from 'dayjs';
 import { CityNames } from '../../types/city.type.js';
-import { HouseType } from '../../types/house-type.type.js';
+import { HouseType } from '../../types/house-type.enum.js';
 import {
   generateRandomValue,
   getRandomItem,
   getRandomItems,
 } from '../../helpers/index.js';
-import { Goods } from '../../types/goods.type.js';
+import { Goods } from '../../types/goods.enum.js';
 import {
   CITIES,
   COLUMNS_SEPARATOR,
