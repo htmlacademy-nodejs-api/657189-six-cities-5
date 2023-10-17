@@ -1,9 +1,10 @@
-import { Config } from './config.interface.js';
-import { Logger } from '../logger/logger.interface.js';
 import { config as dotenvConfig } from 'dotenv';
-import { RestSchema, configRestSchema } from './rest.schema.js';
 import { inject, injectable } from 'inversify';
-import { Component } from '../../types/component.enum.js';
+
+import { Config } from './config.interface.js';
+import { RestSchema, configRestSchema } from './rest.schema.js';
+import { Logger } from '../logger/index.js';
+import { Component } from '../../types/index.js';
 
 @injectable()
 export class RestConfig implements Config<RestSchema> {

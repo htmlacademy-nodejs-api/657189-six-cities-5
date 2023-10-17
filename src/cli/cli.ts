@@ -1,4 +1,4 @@
-import { Command } from '../cli/commands/command.interface.js';
+import { Command } from './commands/command.interface.js';
 
 type CommandCollection = Record<string, Command>;
 type ParsedCommand = Record<string, string[]>;

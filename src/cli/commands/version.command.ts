@@ -2,6 +2,7 @@ import chalk from 'chalk';
 
 import { resolve } from 'node:path';
 import { readFileSync } from 'node:fs';
+
 import { Command } from './command.interface.js';
 import { getErrorMessage } from '../../shared/helpers/index.js';
 
@@ -38,9 +39,7 @@ export class VersionCommand implements Command {
       const version = this.readVersion();
       console.info(`version: ${chalk.green(version)}`);
     } catch (error) {
-      console.error(
-        chalk.red(`Failed to read version from: ${chalk.bgRed(this.filePath)}`),
-      );
+      console.error(chalk.red(`Failed to read version from: ${chalk.bgRed(this.filePath)}`));
       console.error(chalk.red(getErrorMessage(error)));
     }
   }

@@ -23,11 +23,13 @@
     "forceConsistentCasingInFileNames": true,
     "strictPropertyInitialization": false,
     "types": ["node"],
-    "lib": ["ESNext"]
+    "lib": ["ESNext"],
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "**/*.test.ts"],
   "ts-node": {
-    "esm": true
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+    "require": ["tsconfig-paths/register"]
   }
 }

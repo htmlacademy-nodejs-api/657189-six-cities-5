@@ -9,7 +9,7 @@ export type RentOffer = {
   offerDate: Date;
   city: CityNames;
   previewImage: string;
-  images: Array<string>;
+  images: string[];
   isPremium: boolean;
   isFavorite: boolean;
   rating: number;
@@ -17,7 +17,7 @@ export type RentOffer = {
   rooms: number;
   maxAdults: number;
   price: number;
-  goods: Array<Goods>;
+  goods: Goods[];
   createdBy: User;
   lat: number;
   lon: number;
