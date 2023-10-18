@@ -1,24 +1,27 @@
+// eslint-disable-next-line node/file-extension-in-import
+import 'module-alias/register';
 import 'reflect-metadata';
-import { PinoLogger } from './shared/libs/logger/pino.logger.js';
-import { RestApplicaiton } from './rest/rest.application.js';
-import { RestConfig } from './shared/libs/config/rest.config.js';
+
 import { Container } from 'inversify';
+import { Logger } from 'pino';
+import { RestApplicaiton } from './rest/rest.application.js';
+import { createRestAppContainer } from './rest/rest.container.js';
+import { createRentOfferContainer } from './shared/libs/modules/rent-offer/rent-offer-container.js';
+import { createUserContainer } from './shared/libs/modules/user/user.container.js';
 import { Component } from './shared/types/component.enum.js';
-import { Logger } from './shared/libs/logger/index.js';
-import { Config } from './shared/libs/config/config.interface.js';
-import { RestSchema } from './shared/libs/config/rest.schema.js';
 
 const bootstrap = async () => {
-  const container = new Container();
-  container.bind<Logger>(Component.Logger).to(PinoLogger).inSingletonScope();
-  container.bind<RestApplicaiton>(Component.RestApplication).to(RestApplicaiton).inSingletonScope();
-  container.bind<Config<RestSchema>>(Component.Config).to(RestConfig).inRequestScope();
+  const appContainer = Container.merge(
+    createRestAppContainer(),
+    createUserContainer(),
+    createRentOfferContainer(),
+  );
 
   try {
-    const application = container.get<RestApplicaiton>(Component.RestApplication);
+    const application = appContainer.get<RestApplicaiton>(Component.RestApplication);
     await application.init();
   } catch (error) {
-    const logger = container.get<Logger>(Component.Logger);
+    const logger = appContainer.get<Logger>(Component.Logger);
 
     return logger.error('Failed to init application', error);
   }

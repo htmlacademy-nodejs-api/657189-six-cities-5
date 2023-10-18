@@ -1,10 +1,12 @@
 import chalk from 'chalk';
+import axios from 'axios';
+
+
 import { Command } from './command.interface.js';
 import { getErrorMessage } from '../../shared/helpers/common.js';
-import { MockServerData } from '../../shared/types/index.js';
-import axios from 'axios';
 import { TSVFileWriter } from '../../shared/libs/file-writer/tsv-file-writer.js';
-import { TSVRentOfferGenerator } from '../../shared/libs/offerGenerator/index.js';
+import { TSVRentOfferGenerator } from '../../shared/libs/offerGenerator/tsv-rent-offer-generator.js';
+import { MockServerData } from '../../shared/types/mock-server-data.type.js';
 
 const RADIX = 10;
 
