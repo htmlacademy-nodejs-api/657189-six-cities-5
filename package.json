@@ -18,8 +18,6 @@
     "cli": "node ./dist/main.cli.js",
     "ts": "ts-node",
     "cli:dev": "ts-node src/main.cli.ts",
-    "cli:dev-generate-mocks": "ts-node src/main.cli.ts --generate 20 mocks/offers-mocks.tsv http://localhost:3123/api",
-    "cli:dev-import-mocks": "ts-node src/main.cli.ts --import mocks/offers-mocks.tsv",
     "mock:server": "json-server ./mocks/mock-server-data.json --port 3123"
   },
   "devDependencies": {
@@ -59,6 +57,7 @@
     "dotenv": "^16.3.1",
     "inversify": "^6.0.1",
     "mongoose": "^7.6.1",
+    "nodemon": "^3.0.1",
     "pino": "^8.15.6",
     "reflect-metadata": "^0.1.13"
   }

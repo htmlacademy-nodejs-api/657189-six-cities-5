@@ -1,6 +1,6 @@
-import { CityNames, Goods, HouseType } from '../../../../types/index.js';
+import { CityNames, Goods, HouseType, RentOffer } from '../../../../types/index.js';
 
-export class CreateRentOfferDto {
+export class CreateRentOfferDto implements Omit<RentOffer, 'author' | 'commentsCount' | 'rating' | 'isFavorite'> {
   public title: string;
   public description: string;
   public offerDate: Date;
@@ -8,8 +8,6 @@ export class CreateRentOfferDto {
   public previewImage: string;
   public images: Array<string>;
   public isPremium: boolean;
-  public isFavorite: boolean;
-  public rating: number;
   public type: HouseType;
   public rooms: number;
   public maxAdults: number;
@@ -18,5 +16,4 @@ export class CreateRentOfferDto {
   public authorId: string;
   public lat: number;
   public lon: number;
-  public commentsCount?: number | undefined;
 }

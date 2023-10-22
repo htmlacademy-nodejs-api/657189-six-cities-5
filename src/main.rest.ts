@@ -1,5 +1,3 @@
-// eslint-disable-next-line node/file-extension-in-import
-import 'module-alias/register';
 import 'reflect-metadata';
 
 import { Container } from 'inversify';
@@ -9,12 +7,14 @@ import { createRestAppContainer } from './rest/rest.container.js';
 import { createRentOfferContainer } from './shared/libs/modules/rent-offer/rent-offer-container.js';
 import { createUserContainer } from './shared/libs/modules/user/user.container.js';
 import { Component } from './shared/types/component.enum.js';
+import { createCommentContainer } from './shared/libs/modules/comment/comment.container.js';
 
 const bootstrap = async () => {
   const appContainer = Container.merge(
     createRestAppContainer(),
     createUserContainer(),
     createRentOfferContainer(),
+    createCommentContainer(),
   );
 
   try {

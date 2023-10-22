@@ -18,7 +18,7 @@ export type RentOffer = {
   maxAdults: number;
   price: number;
   goods: Goods[];
-  createdBy: User;
+  author: User;
   lat: number;
   lon: number;
   commentsCount?: number;

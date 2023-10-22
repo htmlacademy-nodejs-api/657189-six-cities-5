@@ -1,6 +1,7 @@
-import { prop, getModelForClass, defaultClasses, modelOptions } from '@typegoose/typegoose';
+import { prop, getModelForClass, defaultClasses, modelOptions, Ref } from '@typegoose/typegoose';
 import { User, UserStatus } from '../../../types/index.js';
 import { createSHA256 } from '../../../helpers/hash.js';
+import { RentOfferEntity } from '../rent-offer/rent-offer.eneity.js';
 
 const EMAIL_REG_EXP = /^[^:;,\\[\]<>()\s@]+@[^\s@]+\.\w+$/;
 
@@ -28,6 +29,15 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
   @prop({ required: true, minlength: 6, maxlength: 12 })
   private password?: string;
 
+  @prop({
+    required: true,
+    ref: () => RentOfferEntity,
+    _id: false,
+    default: [],
+    type: () => [RentOfferEntity],
+  })
+  public favoriteRentOffers: Ref<RentOfferEntity>[];
+
   constructor(userData: User) {
     super();
 
@@ -43,6 +53,10 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
 
   public getPassword() {
     return this.password;
+  }
+
+  public verifyPassword(password: string, salt: string) {
+    return createSHA256(password, salt) === this.password;
   }
 }
 
