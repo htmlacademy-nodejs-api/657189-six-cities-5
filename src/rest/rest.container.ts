@@ -7,8 +7,6 @@ import { RestConfig, RestSchema, Config } from '../shared/libs/config/index.js';
 import { DatabaseClient, MongoDatabaseClient } from '../shared/libs/database-client/index.js';
 
 export const createRestAppContainer = () => {
-  const restApplicationContainer = new Container();
-
   const container = new Container();
   container.bind<Logger>(Component.Logger).to(PinoLogger).inSingletonScope();
   container.bind<RestApplicaiton>(Component.RestApplication).to(RestApplicaiton).inSingletonScope();
@@ -19,5 +17,5 @@ export const createRestAppContainer = () => {
     .to(MongoDatabaseClient)
     .inSingletonScope();
 
-  return restApplicationContainer;
+  return container;
 };

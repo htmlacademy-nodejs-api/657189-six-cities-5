@@ -1,10 +1,8 @@
-import chalk from 'chalk';
-
 import { resolve } from 'node:path';
 import { readFileSync } from 'node:fs';
 
 import { Command } from './command.interface.js';
-import { getErrorMessage } from '../../shared/helpers/index.js';
+import { ConsoleLogger, Logger } from '../../shared/libs/logger/index.js';
 
 type PackageJSONConfig = {
   version: string;
@@ -17,7 +15,11 @@ const isPackageJSONConfig = (value: unknown): value is PackageJSONConfig =>
   Object.hasOwn(value, 'version');
 
 export class VersionCommand implements Command {
-  constructor(private readonly filePath: string = './package.json') {}
+  private logger: Logger;
+
+  constructor(private readonly filePath: string = './package.json') {
+    this.logger = new ConsoleLogger();
+  }
 
   private readVersion(): string {
     const jsonContent = readFileSync(resolve(this.filePath), 'utf-8');
@@ -37,10 +39,9 @@ export class VersionCommand implements Command {
   public async execute(): Promise<void> {
     try {
       const version = this.readVersion();
-      console.info(`version: ${chalk.green(version)}`);
+      this.logger.info(`version: ${version}`);
     } catch (error) {
-      console.error(chalk.red(`Failed to read version from: ${chalk.bgRed(this.filePath)}`));
-      console.error(chalk.red(getErrorMessage(error)));
+      this.logger.error(`Failed to read version from: ${this.filePath}`, error);
     }
   }
 }

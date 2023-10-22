@@ -6,7 +6,8 @@ import { UserService } from './user-service.interface.js';
 import { inject, injectable } from 'inversify';
 import { Logger } from '../../logger/index.js';
 import { Component } from '../../../types/index.js';
-
+import { RentOfferEntity } from '../rent-offer/rent-offer.eneity.js';
+import { SortType } from '../../../types/sort.enum.js';
 
 @injectable()
 export class DefaultUserService implements UserService {
@@ -38,5 +39,33 @@ export class DefaultUserService implements UserService {
     }
 
     return this.create(dto, salt);
+  }
+
+  public async removeOfferFromFavorite(offerId: string): Promise<void> {
+    await this.userModel
+      .updateMany({ favoriteOffers: offerId }, { $pull: { favoriteOffers: offerId } })
+      .exec();
+  }
+
+  public async addOfferToFavorite(
+    userId: string,
+    offerId: string,
+  ): Promise<DocumentType<UserEntity> | null> {
+    return this.userModel
+      .findByIdAndUpdate(userId, { $addToSet: { favorites: offerId } }, { new: true })
+      .exec();
+  }
+
+  public async findUserFavoriteOffers(
+    userId: string,
+  ): Promise<DocumentType<RentOfferEntity>[] | null> {
+    return this.userModel
+      .findById(userId, { favoriteOffers: true, _id: false })
+      .populate<{ favoriteOffers: DocumentType<RentOfferEntity>[] }>({
+        path: 'favoriteOffers',
+        options: { sort: { createdAt: SortType.Desc } },
+      })
+      .exec()
+      .then((result) => result?.favoriteOffers ?? null);
   }
 }

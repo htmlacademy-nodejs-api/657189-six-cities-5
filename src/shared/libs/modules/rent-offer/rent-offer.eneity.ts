@@ -12,7 +12,7 @@ export interface RentOfferEntity extends defaultClasses.Base {}
 })
 export class RentOfferEntity
   extends defaultClasses.TimeStamps
-  implements Omit<RentOffer, 'createdBy'> {
+  implements Omit<RentOffer, 'author' | 'isFavorite'> {
   @prop({ required: true, trim: true, minlength: 10, maxlength: 100 })
   public title: string;
 
@@ -34,10 +34,7 @@ export class RentOfferEntity
   @prop({ required: true, default: false })
   public isPremium: boolean;
 
-  @prop({ required: true, default: false })
-  public isFavorite: boolean;
-
-  @prop({ required: true, min: 1, max: 5 })
+  @prop({ required: true, min: 0, max: 5, default: 0 })
   public rating: number;
 
   @prop({ required: true, type: String, enum: HouseType })

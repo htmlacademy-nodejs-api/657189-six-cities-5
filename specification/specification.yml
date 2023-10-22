@@ -364,7 +364,7 @@ paths:
           schema:
             type: string
             description: Город для которого нужно отобразить премиум предложения.
-            example: Paris
+            example: paris
       responses:
         '200':
           description: Список премиум предложений.
@@ -487,13 +487,13 @@ components:
         city:
           type: string
           enum:
-            - Amsterdam
-            - Brussels
-            - Cologne
-            - Dusseldorf
-            - Hamburg
-            - Paris
-          example: Paris
+            - amsterdam
+            - brussels
+            - cologne
+            - dusseldorf
+            - hamburg
+            - paris
+          example: paris
         imagePreview:
           type: string
           example: https://media1.travelguide.de/media/2021/03/Paris-Attraktionen.jpg
@@ -564,13 +564,13 @@ components:
         city:
           type: string
           enum:
-            - Amsterdam
-            - Brussels
-            - Cologne
-            - Dusseldorf
-            - Hamburg
-            - Paris
-          example: Paris
+            - amsterdam
+            - brussels
+            - cologne
+            - dusseldorf
+            - hamburg
+            - paris
+          example: paris
         imagePreview:
           type: string
           example: https://media1.travelguide.de/media/2021/03/Paris-Attraktionen.jpg
@@ -652,13 +652,13 @@ components:
         city:
           type: string
           enum:
-            - Amsterdam
-            - Brussels
-            - Cologne
-            - Dusseldorf
-            - Hamburg
-            - Paris
-          example: Paris
+            - amsterdam
+            - brussels
+            - cologne
+            - dusseldorf
+            - hamburg
+            - paris
+          example: paris
         imagePreview:
           type: string
           example: https://media1.travelguide.de/media/2021/03/Paris-Attraktionen.jpg
@@ -745,13 +745,13 @@ components:
         city:
           type: string
           enum:
-            - Amsterdam
-            - Brussels
-            - Cologne
-            - Dusseldorf
-            - Hamburg
-            - Paris
-          example: Paris
+            - amsterdam
+            - brussels
+            - cologne
+            - dusseldorf
+            - hamburg
+            - paris
+          example: paris
         imagePreview:
           type: string
           example: https://media1.travelguide.de/media/2021/03/Paris-Attraktionen.jpg

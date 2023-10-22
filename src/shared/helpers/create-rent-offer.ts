@@ -62,7 +62,7 @@ export const createRentOffer = (offerData: string): RentOffer => {
     maxAdults: Number.parseInt(maxAdults, RADIX),
     price: Number.parseInt(price, RADIX),
     goods: offerGoods,
-    createdBy: user,
+    author: user,
     lat: Number.parseFloat(lat),
     lon: Number.parseFloat(lon),
     commentsCount: Number.parseInt(commentsCount, RADIX),
