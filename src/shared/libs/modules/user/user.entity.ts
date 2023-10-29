@@ -1,7 +1,7 @@
-import { prop, getModelForClass, defaultClasses, modelOptions, Ref } from '@typegoose/typegoose';
+import { prop, defaultClasses, modelOptions, Ref } from '@typegoose/typegoose';
 import { User, UserStatus } from '../../../types/index.js';
 import { createSHA256 } from '../../../helpers/hash.js';
-import { RentOfferEntity } from '../rent-offer/rent-offer.eneity.js';
+import { RentOfferEntity } from '../rent-offer/index.js';
 
 const EMAIL_REG_EXP = /^[^:;,\\[\]<>()\s@]+@[^\s@]+\.\w+$/;
 
@@ -36,7 +36,7 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
     default: [],
     type: () => [RentOfferEntity],
   })
-  public favoriteRentOffers: Ref<RentOfferEntity>[];
+  public favoriteRentOffers!: Ref<RentOfferEntity>[];
 
   constructor(userData: User) {
     super();
@@ -59,5 +59,3 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
     return createSHA256(password, salt) === this.password;
   }
 }
-
-export const UserModel = getModelForClass(UserEntity);

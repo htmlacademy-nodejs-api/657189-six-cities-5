@@ -11,7 +11,6 @@ export const createRestAppContainer = () => {
   container.bind<Logger>(Component.Logger).to(PinoLogger).inSingletonScope();
   container.bind<RestApplicaiton>(Component.RestApplication).to(RestApplicaiton).inSingletonScope();
   container.bind<Config<RestSchema>>(Component.Config).to(RestConfig).inSingletonScope();
-
   container
     .bind<DatabaseClient>(Component.DatabaseClient)
     .to(MongoDatabaseClient)
