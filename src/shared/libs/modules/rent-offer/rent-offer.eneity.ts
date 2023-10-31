@@ -1,4 +1,4 @@
-import { prop, getModelForClass, defaultClasses, modelOptions, Ref } from '@typegoose/typegoose';
+import { prop, defaultClasses, modelOptions, Ref } from '@typegoose/typegoose';
 import { CityNames, Goods, HouseType, RentOffer } from '../../../types/index.js';
 import { UserEntity } from '../user/user.entity.js';
 
@@ -52,8 +52,8 @@ export class RentOfferEntity
   @prop({ required: true, enum: Goods, type: String })
   public goods: Goods[];
 
-  @prop({ required: true, ref: UserEntity })
-  public authorId: Ref<UserEntity>;
+  @prop({ required: true, ref: () => UserEntity })
+  public authorId!: Ref<UserEntity>;
 
   @prop({ required: true })
   public lat: number;
@@ -64,5 +64,3 @@ export class RentOfferEntity
   @prop({ default: 0 })
   public commentsCount?: number;
 }
-
-export const RentOfferModel = getModelForClass(RentOfferEntity);

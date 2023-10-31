@@ -6,6 +6,7 @@ import { UpdateRentOfferDto } from './dto/update-rent-offer.dto.js';
 
 export interface RentOfferService {
   create(dto: CreateRentOfferDto): Promise<DocumentType<RentOfferEntity>>;
+  find(count: number): Promise<DocumentType<RentOfferEntity>[]>;
   findById(offerId: string): Promise<DocumentType<RentOfferEntity> | null>;
   findPremium(city?: string, limit?: number): Promise<types.DocumentType<RentOfferEntity>[]>;
   findFavorite(userId: string, limit?: number): Promise<types.DocumentType<RentOfferEntity>[]>;

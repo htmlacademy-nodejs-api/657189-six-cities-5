@@ -1,6 +1,6 @@
 import { Comment } from '../../../../types/comment.type.js';
 
-export class CreateCommentDto implements Omit<Comment, 'author'> {
+export class CreateCommentDTO implements Omit<Comment, 'author'> {
   public rating: number;
   public createdAt: Date;
   public text: string;
