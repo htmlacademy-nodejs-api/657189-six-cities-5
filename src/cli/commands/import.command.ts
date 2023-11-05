@@ -70,7 +70,7 @@ export class ImportCommand implements Command {
       images: offer.images,
       isPremium: offer.isPremium,
       type: offer.type,
-      rooms: offer.rooms,
+      bedrooms: offer.bedrooms,
       maxAdults: offer.maxAdults,
       price: offer.price,
       goods: offer.goods,

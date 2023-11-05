@@ -34,7 +34,7 @@ export class RentOfferRDO implements RentOffer {
   public rating: number;
 
   @Expose()
-  public rooms: number;
+  public bedrooms: number;
 
   @Expose()
   public maxAdults: number;

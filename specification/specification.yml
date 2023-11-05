@@ -515,7 +515,7 @@ components:
             - room
             - hotel
           example: house
-        rooms:
+        bedrooms:
           type: integer
           example: 3
         maxAdults:
@@ -592,7 +592,7 @@ components:
             - room
             - hotel
           example: house
-        rooms:
+        bedrooms:
           type: integer
           example: 3
         maxAdults:
@@ -680,7 +680,7 @@ components:
             - room
             - hotel
           example: house
-        rooms:
+        bedrooms:
           type: integer
           example: 3
         maxAdults:
@@ -773,7 +773,7 @@ components:
             - room
             - hotel
           example: house
-        rooms:
+        bedrooms:
           type: integer
           example: 3
         maxAdults:

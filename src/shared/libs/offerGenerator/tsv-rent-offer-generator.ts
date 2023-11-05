@@ -43,7 +43,7 @@ export class TSVRentOfferGenerator implements OfferGenerator {
     const isFavorite: boolean = getRandomItem(BOOLEAN_OPTIONS);
     const rating: number = generateRandomValue(MIN_RATING, MAX_RATING);
     const type: HouseType = getRandomItem(Object.values(HouseType));
-    const rooms: number = generateRandomValue(MIN_ROOMS, MAX_ROOMS);
+    const bedrooms: number = generateRandomValue(MIN_ROOMS, MAX_ROOMS);
     const maxAdults: number = generateRandomValue(MIN_ADULTS, MAX_ADULTS);
     const price: number = generateRandomValue(MIN_PRICE, MAX_PRICE);
     const goods: string = getRandomItems(Object.values(Goods)).join(MULTI_VALUES_SEPARATOR);
