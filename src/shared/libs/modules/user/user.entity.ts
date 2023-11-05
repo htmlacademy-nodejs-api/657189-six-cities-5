@@ -2,6 +2,7 @@ import { prop, defaultClasses, modelOptions, Ref } from '@typegoose/typegoose';
 import { User, UserStatus } from '../../../types/index.js';
 import { createSHA256 } from '../../../helpers/hash.js';
 import { RentOfferEntity } from '../rent-offer/index.js';
+import { USER_NAME_LENGTH, USER_PASSWORD_LENGTH } from './user.constants.js';
 
 const EMAIL_REG_EXP = /^[^:;,\\[\]<>()\s@]+@[^\s@]+\.\w+$/;
 
@@ -20,13 +21,17 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
   @prop({ required: false, type: () => String, enum: UserStatus, default: UserStatus.Standard })
   public userStatus: UserStatus;
 
-  @prop({ required: true, minlength: 1, maxlength: 15 })
+  @prop({ required: true, minlength: USER_NAME_LENGTH.MIN, maxlength: USER_NAME_LENGTH.MAX })
   public username: string;
 
   @prop({ required: false, default: '' })
   public thumbnailUrl: string;
 
-  @prop({ required: true, minlength: 6, maxlength: 12 })
+  @prop({
+    required: true,
+    minlength: USER_PASSWORD_LENGTH.MIN,
+    maxlength: USER_PASSWORD_LENGTH.MAX,
+  })
   private password?: string;
 
   @prop({

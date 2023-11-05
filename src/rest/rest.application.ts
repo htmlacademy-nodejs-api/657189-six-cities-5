@@ -61,11 +61,11 @@ export class RestApplicaiton {
     await this.initDb();
     this.logger.info('Init database completed');
 
-    this.logger.info('Init controllers…');
+    this.logger.info('Init controllers...');
     await this._initControllers();
     this.logger.info('Init controller complete.');
 
-    this.logger.info('Init exception filters…');
+    this.logger.info('Init exception filters...');
     await this._initExceptionFilters();
     this.logger.info('Init exception filters complete.');
 

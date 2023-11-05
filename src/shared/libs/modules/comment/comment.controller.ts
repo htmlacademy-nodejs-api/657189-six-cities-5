@@ -10,8 +10,10 @@ import { RentOfferService } from '../rent-offer/rent-offer-service.interface.js'
 import { HttpMethod } from '../../rest/types/http-method.enum.js';
 import { HttpError } from '../../rest/errors/http-error.js';
 import { fillRDO } from '../../../helpers/common.js';
-import CommentRDO from './rdo/comment.rdo.js';
 import { CreateCommentRequest } from './create-comment-request.type.js';
+import { ValidateDtoMiddleware } from '../../rest/middleware/index.js';
+import { CreateCommentDto } from './dto/create-comment.dto.js';
+import { CommentRdo } from './rdo/comment.rdo.js';
 
 @injectable()
 export class CommentController extends BaseController {
@@ -23,12 +25,15 @@ export class CommentController extends BaseController {
   ) {
     super(logger);
 
-    this.logger.info('Register routes for CommentController…');
+    this.logger.info('Register routes for CommentController...');
 
     this.addRoute({
       path: '/',
       method: HttpMethod.Post,
       handler: this.create,
+      middlewares: [
+        new ValidateDtoMiddleware(CreateCommentDto)
+      ]
     });
   }
 
@@ -49,6 +54,6 @@ export class CommentController extends BaseController {
     const comment = await this.commentService.create({ ...commentData, authorId: author.id });
     await this.offerService.incCommentCount(commentData.rentOfferId);
     await this.offerService.calculateRating(commentData.rentOfferId);
-    this.created(res, fillRDO(CommentRDO, comment));
+    this.created(res, fillRDO(CommentRdo, comment));
   }
 }

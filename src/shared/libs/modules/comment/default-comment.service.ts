@@ -5,7 +5,7 @@ import { Logger } from '../../logger/index.js';
 import { Component } from '../../../types/index.js';
 import { CommentEntity } from './comment.entity.js';
 import { CommentService } from './comment.service.interface.js';
-import { CreateCommentDto } from './dto/create-comment.dto.js';
+import { CreateCommentDTO } from './dto/create-comment.dto.js';
 import { SortType } from '../../../types/sort.enum.js';
 
 @injectable()
@@ -16,7 +16,7 @@ export class DefaultCommentService implements CommentService {
     private readonly commentModel: types.ModelType<CommentEntity>,
   ) {}
 
-  async create(dto: CreateCommentDto): Promise<types.DocumentType<CommentEntity>> {
+  async create(dto: CreateCommentDTO): Promise<types.DocumentType<CommentEntity>> {
     const result = await this.commentModel.create(dto);
 
     this.logger.info(`New comment was created: ${result.text}`);

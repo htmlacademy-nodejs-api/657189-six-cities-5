@@ -14,7 +14,7 @@ export type RentOffer = {
   isFavorite: boolean;
   rating: number;
   type: HouseType;
-  rooms: number;
+  bedrooms: number;
   maxAdults: number;
   price: number;
   goods: Goods[];

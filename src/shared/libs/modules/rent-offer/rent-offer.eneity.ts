@@ -1,22 +1,38 @@
 import { prop, defaultClasses, modelOptions, Ref } from '@typegoose/typegoose';
 import { CityNames, Goods, HouseType, RentOffer } from '../../../types/index.js';
 import { UserEntity } from '../user/user.entity.js';
+import {
+  RENT_OFFER_ADULTS_COUNT,
+  RENT_OFFER_BEDROOMS_COUNT,
+  RENT_OFFER_DESCRIPTION_LENGTH,
+  RENT_OFFER_PRICE,
+  RENT_OFFER_RATING,
+  RENT_OFFER_TITLE_LENGTH,
+} from './rent-offer.constants.js';
 
 export interface RentOfferEntity extends defaultClasses.Base {}
 
 @modelOptions({
   schemaOptions: {
-    collection: 'users',
+    collection: 'rent-offers',
     timestamps: true,
   },
 })
-export class RentOfferEntity
-  extends defaultClasses.TimeStamps
-  implements Omit<RentOffer, 'author' | 'isFavorite'> {
-  @prop({ required: true, trim: true, minlength: 10, maxlength: 100 })
+export class RentOfferEntity extends defaultClasses.TimeStamps implements Omit<RentOffer, 'author' | 'isFavorite'> {
+  @prop({
+    required: true,
+    trim: true,
+    minlength: RENT_OFFER_TITLE_LENGTH.MIN,
+    maxlength: RENT_OFFER_TITLE_LENGTH.MAX,
+  })
   public title: string;
 
-  @prop({ required: true, trim: true, minlength: 20, maxlength: 1024 })
+  @prop({
+    required: true,
+    trim: true,
+    minlength: RENT_OFFER_DESCRIPTION_LENGTH.MIN,
+    maxlength: RENT_OFFER_DESCRIPTION_LENGTH.MAX,
+  })
   public description: string;
 
   @prop({ required: true })
@@ -34,19 +50,19 @@ export class RentOfferEntity
   @prop({ required: true, default: false })
   public isPremium: boolean;
 
-  @prop({ required: true, min: 0, max: 5, default: 0 })
+  @prop({ required: true, min: RENT_OFFER_RATING.MIN, max: RENT_OFFER_RATING.MAX, default: 0 })
   public rating: number;
 
   @prop({ required: true, type: String, enum: HouseType })
   public type: HouseType;
 
-  @prop({ required: true, min: 1, max: 8 })
-  public rooms: number;
+  @prop({ required: true, min: RENT_OFFER_BEDROOMS_COUNT.MIN, max: RENT_OFFER_BEDROOMS_COUNT.MAX })
+  public bedrooms: number;
 
-  @prop({ required: true, min: 1, max: 10 })
+  @prop({ required: true, min: RENT_OFFER_ADULTS_COUNT.MIN, max: RENT_OFFER_ADULTS_COUNT.MAX })
   public maxAdults: number;
 
-  @prop({ required: true, min: 100, max: 100_000 })
+  @prop({ required: true, min: RENT_OFFER_PRICE.MIN, max: RENT_OFFER_PRICE.MAX })
   public price: number;
 
   @prop({ required: true, enum: Goods, type: String })
