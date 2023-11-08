@@ -1,5 +1,5 @@
 import { inject, injectable } from 'inversify';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { BaseController } from '../../rest/controller/index.js';
 import { Component } from '../../../types/index.js';
@@ -12,7 +12,7 @@ import { fillDTO } from '../../../helpers/index.js';
 import { UserRdo } from './rdo/user.rdo.js';
 import { CreateUserRequest } from './create-user-request.type.js';
 import { LoginUserRequest } from './login-user-request.type.js';
-import { ValidateDtoMiddleware } from '../../rest/middleware/index.js';
+import { UploadFileMiddleware, ValidateDtoMiddleware, ValidateObjectIdMiddleware } from '../../rest/middleware/index.js';
 import { LoginUserDto } from './dto/user-login.dto.js';
 
 @injectable()
@@ -40,7 +40,17 @@ export class UserController extends BaseController {
     });
     this.addRoute({ path: '/login', method: HttpMethod.Get, handler: this.checkToken });
     this.addRoute({ path: '/logout', method: HttpMethod.Post, handler: this.logout });
+    this.addRoute({
+      path: '/:userId/avatar',
+      method: HttpMethod.Post,
+      handler: this.uploadAvatar,
+      middlewares: [
+        new ValidateObjectIdMiddleware('userId'),
+        new UploadFileMiddleware(this.configService.get('UPLOAD_DIRECTORY'), 'avatar'),
+      ],
+    });
   }
+
 
   public async create({ body }: CreateUserRequest, res: Response): Promise<void> {
     const isExistingUser = await this.userService.findByEmail(body.email);
@@ -77,5 +87,11 @@ export class UserController extends BaseController {
 
   public async logout(): Promise<void> {
     throw new HttpError(StatusCodes.NOT_IMPLEMENTED, 'Not implemented', 'UserController');
+  }
+
+  public async uploadAvatar(req: Request, res: Response) {
+    this.created(res, {
+      filepath: req.file?.path,
+    });
   }
 }

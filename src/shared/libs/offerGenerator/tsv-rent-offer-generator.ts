@@ -66,7 +66,7 @@ export class TSVRentOfferGenerator implements OfferGenerator {
       isFavorite,
       rating,
       type,
-      rooms,
+      bedrooms,
       maxAdults,
       price,
       goods,
