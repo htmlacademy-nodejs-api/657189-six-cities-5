@@ -52,6 +52,14 @@ export class RestApplicaiton {
     this.server.use(this.baseExceptionFilter.catch.bind(this.baseExceptionFilter));
   }
 
+  private async _initMiddleware() {
+    this.server.use(express.json());
+    this.server.use(
+      '/upload',
+      express.static(this.config.get('UPLOAD_DIRECTORY'))
+    );
+  }
+
 
   public async init() {
     this.logger.info('Application initialized');
@@ -64,6 +72,10 @@ export class RestApplicaiton {
     this.logger.info('Init controllers...');
     await this._initControllers();
     this.logger.info('Init controller complete.');
+
+    this.logger.info('Init app-level middleware');
+    await this._initMiddleware();
+    this.logger.info('App-level middleware init completed');
 
     this.logger.info('Init exception filters...');
     await this._initExceptionFilters();

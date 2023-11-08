@@ -97,6 +97,17 @@ paths:
         '401':
           description: Токен сессии истек или не валиден.
 
+  /users/{usedId}/avatar:
+    post:
+      tags:
+        - users
+      summary: Загрузка аватара пользователя
+      description: Загружает аватар пользователя. Изображение должно быть в формате `.png` или `.jpg`
+      responses:
+        '201':
+          description: Изображение было успешно создано.
+
+
   /offers:
     get:
       tags:
