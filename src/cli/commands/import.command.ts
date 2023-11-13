@@ -9,8 +9,8 @@ import {
   RentOfferModel,
   RentOfferService,
   DefaultRentOfferService,
-} from '../../shared/libs/modules/rent-offer/index.js';
-import { UserService, UserModel, DefaultUserService } from '../../shared/libs/modules/user/index.js';
+} from '../../modules/rent-offer/index.js';
+import { UserService, UserModel, DefaultUserService } from '../../modules/user/index.js';
 import { RentOffer, User } from '../../shared/types/index.js';
 import { Logger, ConsoleLogger } from '../../shared/libs/logger/index.js';
 
