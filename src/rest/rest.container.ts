@@ -7,6 +7,7 @@ import { RestConfig, RestSchema, Config } from '../shared/libs/config/index.js';
 import { DatabaseClient, MongoDatabaseClient } from '../shared/libs/database-client/index.js';
 import { BaseExceptionFilter } from '../shared/libs/rest/exception-filter/base-exception-filter.interface.js';
 import { ExceptionFilter } from '../shared/libs/rest/exception-filter/exception-filter.interface.js';
+import { PathTransformer } from '../shared/libs/rest/transform/path-transformer.js';
 
 export const createRestAppContainer = () => {
   const container = new Container();
@@ -21,6 +22,7 @@ export const createRestAppContainer = () => {
     .bind<ExceptionFilter>(Component.ExceptionFilter)
     .to(BaseExceptionFilter)
     .inSingletonScope();
+  container.bind<PathTransformer>(Component.PathTransformer).to(PathTransformer).inSingletonScope();
 
   return container;
 };

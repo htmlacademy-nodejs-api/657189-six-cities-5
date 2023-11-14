@@ -15,7 +15,7 @@ import { RentOffer, User } from '../../shared/types/index.js';
 import { Logger, ConsoleLogger } from '../../shared/libs/logger/index.js';
 
 const DEFAULT_USER_PASSWORD = '123456';
-const DEFAULT_DB_PORT = '27017';
+const DEFAULT_DB_PORT = '27040';
 
 export class ImportCommand implements Command {
   private userService: UserService;
@@ -36,7 +36,6 @@ export class ImportCommand implements Command {
 
   private async handleImportLine(line: string, resolve: () => void) {
     const offer = createRentOffer(line);
-    this.logger.info(JSON.stringify(offer));
 
     await this.saveOffer(offer);
 

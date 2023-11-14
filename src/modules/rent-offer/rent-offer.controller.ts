@@ -20,6 +20,7 @@ import {
   DocumentExistsMiddleware,
   PrivateRouteMiddleware,
   UploadFileMiddleware,
+  UploadFilesMiddleware,
   ValidateDtoMiddleware,
   ValidateObjectIdMiddleware,
 } from '../../shared/libs/rest/middleware/index.js';
@@ -30,6 +31,7 @@ import {
   ALLOWED_IMAGE_MIME_TYPES,
   DEFAULT_OFFER_LIMIT,
   PREMIUM_OFFER_LIMIT,
+  RENT_OFFER_IMAGES_COUNT,
 } from './rent-offer.constants.js';
 import { CommentService } from '../comment/comment.service.interface.js';
 import { UserService } from '../user/user-service.interface.js';
@@ -132,7 +134,7 @@ export class RentOfferController extends BaseController {
         new VerifyAuthorMiddleware(this.rentOfferService, 'Offer', 'offerId'),
         new UploadFileMiddleware(
           this.configService.get('UPLOAD_DIRECTORY'),
-          'preview-image',
+          'previewImage',
           ALLOWED_IMAGE_MIME_TYPES,
         ),
       ],
@@ -147,10 +149,11 @@ export class RentOfferController extends BaseController {
         new ValidateObjectIdMiddleware('offerId'),
         new DocumentExistsMiddleware(this.rentOfferService, 'Offer', 'offerId'),
         new VerifyAuthorMiddleware(this.rentOfferService, 'Offer', 'offerId'),
-        new UploadFileMiddleware(
+        new UploadFilesMiddleware(
           this.configService.get('UPLOAD_DIRECTORY'),
-          'image',
+          'images',
           ALLOWED_IMAGE_MIME_TYPES,
+          RENT_OFFER_IMAGES_COUNT,
         ),
       ],
     });

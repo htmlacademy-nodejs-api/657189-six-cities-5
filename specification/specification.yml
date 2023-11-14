@@ -462,7 +462,7 @@ components:
         name:
           type: string
           example: Keks
-        avatarPath:
+        thumbnailUrl:
           type: string
           example: https://avatars.githubusercontent.com/u/42127361?v=4
         type:
@@ -505,7 +505,7 @@ components:
             - hamburg
             - paris
           example: paris
-        imagePreview:
+        previewImage:
           type: string
           example: https://media1.travelguide.de/media/2021/03/Paris-Attraktionen.jpg
         images:
@@ -582,7 +582,7 @@ components:
             - hamburg
             - paris
           example: paris
-        imagePreview:
+        previewImage:
           type: string
           example: https://media1.travelguide.de/media/2021/03/Paris-Attraktionen.jpg
         images:
@@ -670,7 +670,7 @@ components:
             - hamburg
             - paris
           example: paris
-        imagePreview:
+        previewImage:
           type: string
           example: https://media1.travelguide.de/media/2021/03/Paris-Attraktionen.jpg
         images:
@@ -763,7 +763,7 @@ components:
             - hamburg
             - paris
           example: paris
-        imagePreview:
+        previewImage:
           type: string
           example: https://media1.travelguide.de/media/2021/03/Paris-Attraktionen.jpg
         images:

@@ -9,16 +9,22 @@ import { Component } from '../../shared/types/index.js';
 import { RentOfferEntity } from '../rent-offer/rent-offer.eneity.js';
 import { SortType } from '../../shared/types/sort.enum.js';
 import { UpdateUserDto } from './dto/update-user.dto.js';
+import { Config } from 'convict';
+import { RestSchema } from '../../shared/libs/config/rest.schema.js';
 
 @injectable()
 export class DefaultUserService implements UserService {
   constructor(
     @inject(Component.Logger) private readonly logger: Logger,
+    @inject(Component.Config) private readonly config: Config<RestSchema>,
     @inject(Component.UserModel) private readonly userModel: types.ModelType<UserEntity>,
   ) {}
 
   public async create(dto: CreateUserDto, salt: string): Promise<DocumentType<UserEntity>> {
-    const user = new UserEntity(dto);
+    const user = new UserEntity({
+      ...dto,
+      thumbnailUrl: `http://${this.config.get('HOST')}/static/default-avatar.png`,
+    });
 
     user.setPassword(dto.password, salt);
     const result = await this.userModel.create(user);
