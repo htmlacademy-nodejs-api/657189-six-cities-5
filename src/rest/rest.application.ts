@@ -1,5 +1,6 @@
 import { Config } from 'convict';
 import { inject, injectable } from 'inversify';
+import cors from 'cors';
 import { getMongoURI } from '../shared/helpers/database.js';
 import { RestSchema } from '../shared/libs/config/rest.schema.js';
 import { MongoDatabaseClient } from '../shared/libs/database-client/mongo.database-client.js';
@@ -10,6 +11,8 @@ import { Controller } from '../shared/libs/rest/controller/index.js';
 import { ExceptionFilter } from '../shared/libs/rest/exception-filter/exception-filter.interface.js';
 import { AuthExceptionFilter } from '../modules/auth/auth.exception-filter.js';
 import { ParseTokenMiddleware } from '../shared/libs/rest/middleware/parse-token.middleware.js';
+import { STATIC_UPLOAD_ROUTE, STATIC_FILES_ROUTE } from './rest.constant.js';
+import { getFullServerPath } from '../shared/helpers/index.js';
 
 @injectable()
 export class RestApplicaiton {
@@ -61,8 +64,10 @@ export class RestApplicaiton {
     const authenticateMiddleware = new ParseTokenMiddleware(this.config.get('JWT_SECRET'));
 
     this.server.use(express.json());
-    this.server.use('/upload', express.static(this.config.get('UPLOAD_DIRECTORY')));
+    this.server.use(STATIC_UPLOAD_ROUTE, express.static(this.config.get('UPLOAD_DIRECTORY')));
+    this.server.use(STATIC_FILES_ROUTE, express.static(this.config.get('STATIC_DIRECTORY')));
     this.server.use(authenticateMiddleware.execute.bind(authenticateMiddleware));
+    this.server.use(cors());
   }
 
   public async init() {
@@ -87,6 +92,8 @@ export class RestApplicaiton {
 
     this.logger.info('Init server...');
     await this.initServer();
-    this.logger.info(`Server started on http://localhost:${this.config.get('PORT')}`);
+    this.logger.info(
+      `Server started on ${getFullServerPath(this.config.get('HOST'), this.config.get('PORT'))}`,
+    );
   }
 }

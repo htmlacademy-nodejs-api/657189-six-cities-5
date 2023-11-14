@@ -11,30 +11,21 @@
       "Musk Hotel provides air-conditioned rooms, a terrace, free WiFi and a restaurant."
     ],
     "previews": [
-      "user.jpg",
-      "photo.jpg",
-      "awesome-avatar.jpg",
-      "roland.jpg",
-      "smite.jpg",
-      "coffee.jpg"
+      "default-room.png"
     ],
     "images": [
-      "hotel.jpg",
-      "house.jpg",
-      "dark-tower.jpg",
-      "undertown.jpg",
-      "joy.jpg",
-      "assengard.jpg"
+      "default-room.png"
     ],
     "usernames": [
-      "Nairo Delpho",
-      "Gavatreau Bizou",
-      "Phonettia Quinal",
-      "Falko Sylentis",
-      "Choryn Riggery",
-      "Hersperon Yllan",
-      "Fabria Eda",
-      "Sereni Tyrson"
+      "Nairo",
+      "Gavatreau",
+      "Phonettia",
+      "Falko",
+      "Choryn",
+      "Hersperon",
+      "Fabria",
+      "Fabria",
+      "Sereni"
     ],
     "emails": [
       "snow@pisem.local",

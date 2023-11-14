@@ -80,7 +80,7 @@ npm run ts ./src/main.cli.ts -- --generate 20 ./mocks/mock-data.tsv http://local
 #### Наполнить базу моковыми данными
 
 ```bash
-npm run ts ./src/main.cli.ts -- --import ./mocks/mock-data.tsv admin test 127.0.0.1:27040 six-cities secret                                                                                                                                                                                                                                         
+npm run ts ./src/main.cli.ts -- --import ./mocks/mock-data.tsv admin test 127.0.0.1 six-cities secret                                                                                                                                                                                                                                         
 ```
 
 ## Структура проекта

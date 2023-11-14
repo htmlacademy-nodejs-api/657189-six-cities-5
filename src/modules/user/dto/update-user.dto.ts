@@ -1,6 +1,6 @@
 import { IsEmail, IsEnum, IsOptional, IsString, IsUrl, MaxLength, MinLength } from 'class-validator';
 import { User, UserStatus } from '../../../shared/types/index.js';
-import { USER_NAME_LENGTH, USER_PASSWORD_LENGTH } from '../user.constants.js';
+import { USER_NAME_LENGTH } from '../user.constants.js';
 
 export class UpdateUserDto implements Partial<User> {
   @IsOptional()

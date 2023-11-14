@@ -8,6 +8,8 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
+    "strictPropertyInitialization": false,
+    "forceConsistentCasingInFileNames": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
@@ -20,16 +22,12 @@
     "sourceMap": true,
     "outDir": "./dist",
     "emitDecoratorMetadata": true,
-    "forceConsistentCasingInFileNames": true,
-    "strictPropertyInitialization": false,
-    "types": ["node"],
     "lib": ["ESNext"],
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "types/*"],
   "exclude": ["node_modules", "**/*.test.ts"],
   "ts-node": {
-    "esm": true,
-    "experimentalSpecifierResolution": "node",
-    "require": ["tsconfig-paths/register"]
-  }
+    "esm": true
+  },
+  "files": ["src/shared/types/custom.d.ts"]
 }

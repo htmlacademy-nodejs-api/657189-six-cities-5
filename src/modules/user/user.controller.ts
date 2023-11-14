@@ -54,7 +54,7 @@ export class UserController extends BaseController {
       handler: this.uploadAvatar,
       middlewares: [
         new ValidateObjectIdMiddleware('userId'),
-        new UploadFileMiddleware(this.configService.get('UPLOAD_DIRECTORY'), 'thumbnail', [
+        new UploadFileMiddleware(this.configService.get('STATIC_DIRECTORY'), 'thumbnail', [
           'png',
           'jpg',
         ]),
