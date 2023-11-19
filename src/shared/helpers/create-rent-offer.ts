@@ -47,7 +47,7 @@ export const createRentOffer = (offerData: string): RentOffer => {
     thumbnailUrl,
     userStatus: userStatus as UserStatus,
   };
-  const result: RentOffer = {
+  return {
     title,
     description,
     offerDate: new Date(offerDate),
@@ -67,6 +67,4 @@ export const createRentOffer = (offerData: string): RentOffer => {
     lon: Number.parseFloat(lon),
     commentsCount: Number.parseInt(commentsCount, RADIX),
   };
-
-  return result;
 };
