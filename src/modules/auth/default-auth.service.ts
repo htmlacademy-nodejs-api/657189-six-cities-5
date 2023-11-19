@@ -7,7 +7,7 @@ import { AuthService } from './auth-service.interface.js';
 import { JWT_ALGORITHM, JWT_EXPIRED } from './auth.constant.js';
 import { Component } from '../../shared/types/index.js';
 import { Config, RestSchema } from '../../shared/libs/config/index.js';
-import { TokenPayload } from './types/tokenPayload.js';
+import { TokenPayload } from './types/token-payload.js';
 import { Logger } from '../../shared/libs/logger/index.js';
 import { LoginUserDto } from '../user/dto/user-login.dto.js';
 import { UserNotFoundException, UserPasswordIncorrectException } from './errors/index.js';
